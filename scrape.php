@@ -50,6 +50,8 @@ bash jsonposts.script
 
 This will download the JSON files. If you specified the cookie login information it will have stored the cookie information in the script already.
 
+*/
+
 /***** LEAVE EVERYTHING BELOW HERE ALONE *****/
 
 $jaiku_start_url = 'http://' . $username . '.jaiku.com/';
