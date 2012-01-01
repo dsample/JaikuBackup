@@ -166,7 +166,7 @@ while ($nextPage != false) {
 		{
 			$cookie = '';
 		}
-		fwrite($listJSONscript, 'curl' . $cookie . ' --create-dirs -o ' . $username . '_json/' . $post_user . '/' . $post_id . '.json ' . $postURL . "/json\n");
+		fwrite($listJSONscript, 'curl -C' . $cookie . ' --create-dirs -o ' . $username . '_json/' . $post_user . '/' . $post_id . '.json ' . $postURL . "/json\n");
 	}
 
 	$nextPage = findNextPage($xml);
