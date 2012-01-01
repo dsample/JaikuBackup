@@ -25,11 +25,11 @@ while (!feof($input))
 }
 fclose($input);
 
-$files = explode("\n", $filelist);
+$files = preg_split('/\r\n|\r|\n/', $filelist);
 
 foreach($files as $file)
 {
-	if (strlen($file) > 2)
+	if (strlen($file) > 5)
 	{
 		$fp = fopen($file, 'r');
 		$raw_json = "";
@@ -39,46 +39,41 @@ foreach($files as $file)
 		fclose($fp);
 		
 		$json = json_decode($raw_json, true);
-	}
-	#print_r($json);
 
-	switch (json_last_error()) {
-        case JSON_ERROR_NONE:
-            #No error, continue
-        break;
-        case JSON_ERROR_DEPTH:
-            echo '# JSON ERROR: ' . $file . ' - Maximum stack depth exceeded' . "\n";
-        break;
-        case JSON_ERROR_STATE_MISMATCH:
-            echo '# JSON ERROR: ' . $file . ' - Underflow or the modes mismatch' . "\n";
-        break;
-        case JSON_ERROR_CTRL_CHAR:
-            echo '# JSON ERROR: ' . $file . ' - Unexpected control character found' . "\n";
-        break;
-        case JSON_ERROR_SYNTAX:
-            echo '# JSON ERROR: ' . $file . ' - Syntax error, malformed JSON' . "\n";
-        break;
-        case JSON_ERROR_UTF8:
-            echo '# JSON ERROR: ' . $file . ' - Malformed UTF-8 characters, possibly incorrectly encoded' . "\n";
-        break;
-        default:
-            echo '# JSON ERROR: ' . $file . ' - Unknown error' . "\n";
-        break;
-    }
+		switch (json_last_error()) {
+	        case JSON_ERROR_NONE:
+	            #No error, continue
+	        break;
+	        case JSON_ERROR_DEPTH:
+	            echo '# JSON ERROR: ' . $file . ' - Maximum stack depth exceeded' . "\n";
+	        break;
+	        case JSON_ERROR_STATE_MISMATCH:
+	            echo '# JSON ERROR: ' . $file . ' - Underflow or the modes mismatch' . "\n";
+	        break;
+	        case JSON_ERROR_CTRL_CHAR:
+	            echo '# JSON ERROR: ' . $file . ' - Unexpected control character found' . "\n";
+	        break;
+	        case JSON_ERROR_SYNTAX:
+	            echo '# JSON ERROR: ' . $file . ' - Syntax error, malformed JSON' . "\n";
+	        break;
+	        case JSON_ERROR_UTF8:
+	            echo '# JSON ERROR: ' . $file . ' - Malformed UTF-8 characters, possibly incorrectly encoded' . "\n";
+	        break;
+	        default:
+	            echo '# JSON ERROR: ' . $file . ' - Unknown error' . "\n";
+	        break;
+	    }
 
-	/* User first */
-
-	if ($json['user']['avatar'])
-	{
-		$user_nick = $json['user']['nick'];
-		$user_avatar = $json['user']['avatar'];
-		$avatars[$user_nick] = $user_avatar;
-	}
+		/* User first */
 	
-	
-	try
-	{
-		echo $file . "\n";
+		if ($json['user']['avatar'])
+		{
+			$user_nick = $json['user']['nick'];
+			$user_avatar = $json['user']['avatar'];
+			$avatars[$user_nick] = $user_avatar;
+		}
+		
+		
 		foreach ($json['comments'] as $comment)
 		{
 			if ($comment['user']['avatar'])
@@ -89,12 +84,12 @@ foreach($files as $file)
 			}
 		}
 	}
-	catch(Exception $e)
+	else
 	{
-		die($e->getMessage . "\nIn: " . $file);
+		echo $file . "\n";
 	}
 }
-exit();
+
 foreach ($avatars as $nick => $avatar)
 {
 	foreach ($imageVariations as $var)
