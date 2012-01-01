@@ -90,6 +90,8 @@ foreach($files as $file)
 	}
 }
 
+$avatars = array_unique($avatars);
+
 foreach ($avatars as $nick => $avatar)
 {
 	foreach ($imageVariations as $var)
