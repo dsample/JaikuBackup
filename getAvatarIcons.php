@@ -15,7 +15,7 @@ find -name *.json . | php getAvatarIcons.php > avatars.list
 
 if (!function_exists('json_decode')) die('Need to compile PHP with JSON');
 
-$imageVariations = array('u','t','l','m','f');
+$imageVariations = array('u','t','m','f');
 
 $input = fopen("php://stdin", 'r');
 $filelist = "";
