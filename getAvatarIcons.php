@@ -7,7 +7,7 @@ This script looks at the JSON files the Jaiku backup script helped you download,
 
 Run it:
 
-find -name *.json . | php getAvatarIcons.php
+find -name *.json . | php getAvatarIcons.php > avatars.list
 
 */
 
@@ -95,7 +95,7 @@ foreach ($avatars as $nick => $avatar)
 	foreach ($imageVariations as $var)
 	{
 		$image_url = preg_replace('@_\w\.jpg$@i', '_' . $var . '.jpg', $avatar);
-		echo 'curl --create-dirs -o avatars/' . $nick . '_' . $var . '.jpg ' . $image_url . "\n";
+		echo 'curl -C --create-dirs -o avatars/' . $nick . '_' . $var . '.jpg ' . $image_url . "\n";
 	}
 }
 
