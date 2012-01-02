@@ -78,3 +78,42 @@ Once you have all of the json data files just run the other script (you might ne
 Once that's finished you have a list of image URLs in the file `avatars.script`, now run:
 
 `bash avatars.script`
+
+## How to complete your login details
+
+You need to inspect your browser's cookie data, and the method will vary depending on your browser.
+
+The cookies you're looking for are:
+* jaikuuser
+* jaikupassword
+
+### Chrome
+
+1. Open Chrome
+2. Go to jaiku.com and login
+3. Click on View | Developer | Developer Tools
+4. Select the Resources tab
+5. On the left select the item under Cookies
+6. The username and password required for the scripts are listed on the right under the Value column
+
+### Firefox
+
+1. Open Firefox
+2. Go to jaiku.com and login
+3. Open the Firefox preferences dialog
+4. Select the Privacy tab
+5. Select 'remove individual cookies'
+6. Type 'jaiku' into the search box
+7. The username and password required for the scripts are listed as 'Content' when each is selected
+
+### Safari
+
+1. Open Safari
+2. Open the Safari preferences dialog
+3. Select the Advanced tab
+4. Check the option 'Show Develop menu in menu bar' and close the dialog
+5. Go to jaiku.com and login
+6. Click Develop | Show Web Inspector
+7. Select the Resources tab
+8. On the left select the item under Cookies
+9. The username and password required for the scripts are listed on the right under the Value column
