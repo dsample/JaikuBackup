@@ -63,6 +63,10 @@ foreach($files as $file)
 	            echo '# JSON ERROR: ' . $file . ' - Unknown error' . "\n";
 	        break;
 	    }
+	    if (json_last_error() != JSON_ERROR_NONE)
+	    {
+			continue;
+	    }
 
 		/* User first */
 	
