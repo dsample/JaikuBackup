@@ -25,7 +25,7 @@ There are several steps, but hopefully all are fairly easy to accomplish
       * JSON
       * Curl
 * Wget
-   * OSX: You'll need to build it from source, a guide is [here](http://krypted.com/mac-os-x/howto-install-wget-for-mac-os-x/)
+   * OSX: You'll need to build it from source, a guide is [here](http://www.renownedmedia.com/blog/install-wget-on-os-x-lion/)
    * Linux: should have it already
    * Windows: Download it from the [unxutils](unxutils.sf.net) or [gnuwin32](http://gnuwin32.sourceforge.net/packages/wget.htm) packages
 * cURL
