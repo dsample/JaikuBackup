@@ -69,7 +69,7 @@ If __all of your contacts__ have public profiles, then you can use Wget quite si
 
 If however, you need to download private posts you will need to add the cookie information to the Wget command like this:
 
-`wget --no-cookies --header "--no-cookies --header "Cookie: jaikuuser=USERNAME_HERE; jaikupassword=PASSWORD_HERE" -E -H -k -K -p -i <username>_posts.list`
+`wget --no-cookies --header "Cookie: jaikuuser=USERNAME_HERE; jaikupassword=PASSWORD_HERE" -E -H -k -K -p -i <username>_posts.list`
 
 Make sure you fill in the cookie information into this command as you found earlier, into the sections marked `USERNAME_HERE` and `PASSWORD_HERE`.
 
