@@ -82,7 +82,9 @@ Once you have all of the json data files just run the other script (you might ne
 
 `find . -name *.json | php getAvatarIcons.php > avatars.script`
 
-Once that's finished you have a list of image URLs in the file `avatars.script`, now run:
+Once that's finished you have a list of image URLs in the file `avatars.script`. If, by looking at avatars.script with a text editor, you notice there's a lot of lines with `# ERROR`, see the section below titled 'Fixing JSON files'. 
+
+Now, to download the images run:
 
 `bash avatars.script`
 
@@ -125,3 +127,29 @@ The cookies you're looking for are:
 7. Select the __Resources__ tab
 8. On the left select the item under __Cookies__
 9. The username and password required for the scripts are listed on the right under the __Value__ column
+
+## Fixing JSON files
+
+There are some issues with the syntax of some of the JSON files downloaded from Jaiku. To fix them is a simple find & replace.
+
+### Manual correction
+
+To do this manually, simply open the file referenced in the ERROR line inside the `avatars.script` file in a text editor, and find `: ,` and replace it with `: "",`, then save.
+
+Since there may be many there is a command to automate it, but it requires another application called `sed` which you may again need to install. For Windows users, this will be in the same packages referenced at the start of this document. for OSX and Linux you should have this already.
+
+### Automated correction
+
+__OSX__
+
+`find . -name "*.json" -type f -exec sed -i "" 's/: ,/: \"\",/g' '{}' \;`
+
+__Linux__
+
+`find . -name "*.json" -type f -exec sed -i 's/: ,/: \"\",/g' '{}' \;`
+
+__Windows__
+
+`find . -name "*.json" -type f -exec sed -i 's/: ,/: \"\",/g' '{}' \;`
+
+You will now need to 
