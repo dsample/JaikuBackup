@@ -30,7 +30,7 @@ There are several steps, but hopefully all are fairly easy to accomplish
    * Windows: Download it from the [unxutils](unxutils.sf.net) or [gnuwin32](http://gnuwin32.sourceforge.net/packages/wget.htm) packages
 * cURL
    * OSX: You should have it already
-   * Linux: Might need to install it from a package. Ubuntu package 'curl'
+   * Linux: Might need to install it from a package, as well as the PHP module. Ubuntu packages 'curl' and 'php5-curl'
    * Windows: Download from [the project's site](http://curl.haxx.se/download.html)
 
 ### 1. Set the scrape script up
